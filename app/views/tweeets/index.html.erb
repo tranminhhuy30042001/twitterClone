@@ -1,7 +1,15 @@
+<%= csrf_meta_tags %>
 <section class="section">
   <div class="container">
     <div class="columns">
+    
+    <% if user_signed_in? %>
+      <%= render 'tweeets/profile' %>
+      <% else %>
       <%= render 'tweeets/trend' %>
+    <% end %>
+    
+      
       <%= render 'tweeets/feed' %>
       <%= render 'tweeets/who-to-follow' %>
     </div>

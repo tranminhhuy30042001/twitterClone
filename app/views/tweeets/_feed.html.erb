@@ -1,33 +1,38 @@
 <div class="column is-half">
+  <% if user_signed_in? %>
   <article class="media box">
     <figure class="media-left">
       <p class="image is-64x64">
-        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+
+        <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+        
       </p>
     </figure>
     <div class="media-content">
         <%= render 'tweeets/form' %>
     </div>
   </article>
-
+<% end %>
 <div class="column">
   <% @tweeets.each do |tweeet| %>
     <div class="box" >
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+            <%= gravatar_image_tag(tweeet.user.email, size: 64, alt: tweeet.user.name) %>
+            
           </figure>
         </div>
         <div class="media-content">
           <div class="content">
-            <strong>
-              z
-            </strong>
+            <strong> <%= tweeet.user.name%> </strong>
             <br>
-            <small>@zsfj</small>
+            <small> <%=tweeet.user.username%> </small>
             <p> <%=tweeet.tweeet%> </p>
           </div>
+          
+          <% if user_signed_in? %>
+        
           <div class="level">
             <div class="level-left is-mobile">
               <%= link_to tweeet,class: "level-item" do %>
@@ -46,6 +51,9 @@
                 </span>
               <% end %>
             </div>
+                
+          <% end %>
+          
           </div>
         </article>
       </div>

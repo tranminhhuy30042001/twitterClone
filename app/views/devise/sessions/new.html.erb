@@ -33,7 +33,7 @@
             </div>
           </div>
          <div class="field ">
-          <%= f.input :remember_me ,class: "outline",as: :boolean if devise_mapping.rememberable? %>
+          <%= f.input :remember_me ,wrapper: false,as: :boolean if devise_mapping.rememberable? %>
          </div>
         
         
