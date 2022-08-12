@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
   root "tweeets#index"
+  get "tweeets/feed" => "tweeets#feed"
+  get "tweeets/who-to-follow" => "tweeets#who-to-follow"
+  get "tweeets/trend" => "tweeets#trend"
 end
